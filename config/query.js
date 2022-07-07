@@ -1,5 +1,4 @@
 const db = require("./connect");
-const connection = require("./connect");
 
 function queriesViewDepartments() {
   const sql = `SELECT * FROM department`;

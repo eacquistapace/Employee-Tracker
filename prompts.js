@@ -1,47 +1,45 @@
-const inquirer = require("inquirer");
+const { prompt } = require("inquirer");
 const {
   queriesViewDepartments,
   queriesViewEmployee,
   queriesViewRoles,
   queriesAddDepartment,
-} = require("./query");
+} = require("./config/query.js");
 
 function menu() {
-  inquirer
-    .prompt([
-      {
-        type: "list",
-        name: "mainMenu",
-        message: "Please choose from the following options.",
-        choices: [
-          "View All Departments",
-          "View All Roles",
-          "View All Employees",
-          "Add a Department",
-          "Add a Role",
-          "Add an Employee",
-          "Update an Employee Role",
-        ],
-      },
-    ])
-    .then(({ mainMenu }) => {
-      console.log(mainMenu);
-      if (mainMenu === "View All Departments") {
-        viewDepartments();
-      } else if (mainMenu === "View All Roles") {
-        viewRoles();
-      } else if (mainMenu === "View All Employees") {
-        viewEmployee();
-      } else if (mainMenu === "Add a Department") {
-        addDepartment();
-      } else if (mainMenu === "Add a Role") {
-        addRole();
-      } else if (mainMenu === "Add an Employee") {
-        addEmployee();
-      } else if (mainMenu === "Update an Employee Role") {
-        updateEmployee();
-      }
-    });
+  prompt([
+    {
+      type: "list",
+      name: "mainMenu",
+      message: "Please choose from the following options.",
+      choices: [
+        "View All Departments",
+        "View All Roles",
+        "View All Employees",
+        "Add a Department",
+        "Add a Role",
+        "Add an Employee",
+        "Update an Employee Role",
+      ],
+    },
+  ]).then(({ mainMenu }) => {
+    console.log(mainMenu);
+    if (mainMenu === "View All Departments") {
+      viewDepartments();
+    } else if (mainMenu === "View All Roles") {
+      viewRoles();
+    } else if (mainMenu === "View All Employees") {
+      viewEmployee();
+    } else if (mainMenu === "Add a Department") {
+      addDepartment();
+    } else if (mainMenu === "Add a Role") {
+      addRole();
+    } else if (mainMenu === "Add an Employee") {
+      addEmployee();
+    } else if (mainMenu === "Update an Employee Role") {
+      updateEmployee();
+    }
+  });
 }
 
 menu();
@@ -52,7 +50,7 @@ function viewEmployee() {
   menu();
 }
 function addEmployee() {
-  inquirer.prompt([
+  prompt([
     {
       type: "input",
       name: "first_name",
@@ -77,7 +75,7 @@ function viewDepartments() {
 }
 function addDepartment() {
   console.log("addDepartment");
-  inquirer.prompt([
+  prompt([
     {
       type: "input",
       name: "department",

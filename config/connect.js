@@ -8,7 +8,7 @@ const db = mysql.createConnection(
     password: process.env.PASSWORD,
     database: process.env.DB_NAME,
   },
-  console.log(`You are connected to employee_db`)
+  console.log(`You are now searching the employee database`)
 );
 db.connect(function (err) {
   if (err) {
